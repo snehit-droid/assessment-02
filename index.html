@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assessment-2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        var cont = document.createElement('div');
+        cont.id = 'contain';
+        cont.classList.add('container');
+
+        var head = document.createElement('h2');
+        head.id = 'head';
+        head.innerHTML = 'NY Times';
+        head.style.textAlign = 'center';
+
+        var navb = document.createElement('NAV');
+        navb.id = 'navbar';
+        navb.classList.add('navbar','navbar-expand-lg','navbar-light','bg-light');
+
+        // var anc = document.createElement("A");
+        // anc.classList.add('navbar-brand');
+
+        var btn1 = document.createElement('button');
+        btn1.classList.add('navbar-toggler');
+        btn1.setAttribute('type','button');
+        btn1.setAttribute('data-toggle','collapse');
+        btn1.setAttribute('data-target','#navbarSupportedContent');
+        btn1.setAttribute('aria-controls','navbarSupportedContent');
+        btn1.setAttribute('aria-expanded','false');
+        btn1.setAttribute('aria-label','Toggle navigation');
+
+        var span1 = document.createElement('SPAN');
+        span1.classList.add('navbar-toggler-icon');
+
+        btn1.appendChild(span1);
+
+        var div1 = document.createElement('div');
+        div1.id = 'navbarSupportedContent';
+        div1.classList.add('collapse','navbar-collapse');
+
+        var ul1 = document.createElement('UL');
+        ul1.classList.add('navbar-nav','mr-auto');
+
+        var li1 = document.createElement('LI');
+        li1.classList.add('nav-item','active');
+
+        var a1 = document.createElement('button');
+        a1.id = 'home';
+        a1.classList.add('nav-link');
+        a1.innerHTML = 'HOME';
+
+        li1.appendChild(a1);
+
+        var li2 = document.createElement('LI');
+        li2.classList.add('nav-item','active');
+
+        var a2 = document.createElement('button');
+        a2.id = 'world';
+        a2.classList.add('nav-link');
+        a2.innerHTML = 'WORLD';
+
+        li2.appendChild(a2);
+
+        var li3 = document.createElement('LI');
+        li3.classList.add('nav-item','active');
+
+        var a3 = document.createElement('button');
+        a3.id = 'politics';
+        a3.classList.add('nav-link');
+        a3.innerHTML = 'POLITICS';
+
+        li3.appendChild(a3);
+
+        var li4 = document.createElement('LI');
+        li4.classList.add('nav-item','active');
+
+        var a4 = document.createElement('button');
+        a4.id = 'magazine';
+        a4.classList.add('nav-link');
+        a4.innerHTML = 'MAGAZINE';
+
+        li4.appendChild(a4);
+
+        var li5 = document.createElement('LI');
+        li5.classList.add('nav-item','active');
+
+        var a5 = document.createElement('button');
+        a5.id = 'technology';
+        a5.classList.add('nav-link');
+        a5.innerHTML = 'TECHNOLOGY';
+
+        li5.appendChild(a5);
+
+        var li6 = document.createElement('LI');
+        li6.classList.add('nav-item','active');
+
+        var a6 = document.createElement('button');
+        a6.id = 'science';
+        a6.classList.add('nav-link');
+        a6.innerHTML = 'SCIENCE';
+
+        li6.appendChild(a6);
+
+        var li7 = document.createElement('LI');
+        li7.classList.add('nav-item','active');
+
+        var a7 = document.createElement('button');
+        a7.id = 'health';
+        a7.classList.add('nav-link');
+        a7.innerHTML = 'HEALTH';
+
+        li7.appendChild(a7);
+
+        var li8 = document.createElement('LI');
+        li8.classList.add('nav-item','active');
+
+        var a8 = document.createElement('button');
+        a8.id = 'sports';
+        a8.classList.add('nav-link');
+        a8.innerHTML = 'SPORTS';
+
+        li8.appendChild(a8);
+
+        var li9 = document.createElement('LI');
+        li9.classList.add('nav-item','active');
+
+        var a9 = document.createElement('button');
+        a9.id = 'arts';
+        a9.classList.add('nav-link');
+        a9.innerHTML = 'ARTS';
+
+        li9.appendChild(a9);
+
+        var li10 = document.createElement('LI');
+        li10.classList.add('nav-item','active');
+
+        var a10 = document.createElement('button');
+        a10.id = 'fashion';
+        a10.classList.add('nav-link');
+        a10.innerHTML = 'FASHION';
+
+        li10.appendChild(a10);
+
+        var li11 = document.createElement('LI');
+        li11.classList.add('nav-item','active');
+
+        var a11 = document.createElement('button');
+        a11.id = 'food';
+        a11.classList.add('nav-link');
+        a11.innerHTML = 'FOOD';
+
+        li11.appendChild(a11);
+
+        var li12 = document.createElement('LI');
+        li12.classList.add('nav-item','active');
+
+        var a12 = document.createElement('button');
+        a12.id = 'travel';
+        a12.classList.add('nav-link');
+        a12.innerHTML = 'TRAVEL';
+
+        li12.appendChild(a12);
+
+        ul1.append(li1, li2, li3, li4, li5, li6, li7, li8, li9, li10, li11, li12);
+        div1.appendChild(ul1);
+
+        var pbody = document.createElement('div');
+        pbody.id = 'body';
+
+        navb.append(btn1, div1);
+        cont.append(head, navb, pbody);
+        document.body.append(cont);
+    </script>
+    <script src="script.js"> </script>
+</body>
+</html>
