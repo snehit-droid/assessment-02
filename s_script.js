@@ -1,14 +1,14 @@
 var ho = document.getElementById('home');
-ho.addEventListener("click", home);
+ho.addEventListener("click", implement(ho.id));
 
 var wo = document.getElementById('world');
-wo.addEventListener("click", world);
+wo.addEventListener("click", implement(wo.id));
 
 var po = document.getElementById('politics');
-po.addEventListener("click", politics);
+po.addEventListener("click", implement(po.id));
 
 var ma = document.getElementById('magazine');
-ma.addEventListener("click", magazine);
+ma.addEventListener("click", implement(ma.id));
 
 var te = document.getElementById('technology');
 te.addEventListener("click", technology);
@@ -36,135 +36,142 @@ tr.addEventListener("click", travel);
 
 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-async function home(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
-    var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
-    var jsoni1 = await i1.json();
-    var iter = jsoni1.results;
+
+async function implement(value){
+    let i1 = await fetch(`https://api.nytimes.com/svc/topstories/v2/${value}.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ`);
+    let jsoni1 = await i1.json();
+    let iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
+    })
+}
+
+
+async function home(){
+    let i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
+    let jsoni1 = await i1.json();
+    let iter = jsoni1.results;
+    iter.forEach( function(val){
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function world(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
-    var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
-    var jsoni1 = await i1.json();
-    var iter = jsoni1.results;
+    console.log('world');
+    let i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
+    let jsoni1 = await i1.json();
+    let iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function politics(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function magazine(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/magazine.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
+// function magazine(){
+//     return new Promise(async (resolve, reject) => {
+//             var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/magazine.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
+//             var jsoni1 = await i1.json();
+//             var iter = jsoni1.results;
+//             resolve(iter);
+//         })
+//     }    
+// magazine()
+// .then(function(data){
+//     data.forEach( function(val){
+//         createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
+//     })
+// })
+// .catch(function(err){
+//     console.log(err);
+// })    
+
+
 async function technology(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function science(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/science.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function health(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/health.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function sports(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function arts(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function fashion(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/fashion.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function food(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/food.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
 async function travel(){
-    var app = document.getElementById('body');
-    app.innerHTML = '';
     var i1 = await fetch('https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=CnfVYwqGRGcpPhY6Ei7iuDhaXTX5f5SQ');
     var jsoni1 = await i1.json();
     var iter = jsoni1.results;
     iter.forEach( function(val){
-        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia['4'].url);
+        createCard(val.abstract, val.byline, val.created_date, val.item_type, val.section, val.title, val.short_url, val.multimedia[4].url);
     })
 }
 
@@ -222,4 +229,4 @@ function createCard(ab, by, cr, it, se, ti, sh, mu){
     app.appendChild(r1);
 }
 
-home();
+// home();
